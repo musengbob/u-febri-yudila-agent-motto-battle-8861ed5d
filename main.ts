@@ -5,8 +5,9 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const MOTTO =
-  "I never hallucinate. I just invent facts with total confidence and call it research.";
+function buildEntryLine(): string {
+  return "I never hallucinate. I just invent facts with total confidence and call it research.";
+}
 
 function resolveOutputPath(): string {
   if (process.env.MAKEFUN_OUTPUT_DIR) return process.env.MAKEFUN_OUTPUT_DIR;
@@ -17,4 +18,4 @@ function resolveOutputPath(): string {
 
 const outDir = resolveOutputPath();
 mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, "entry.txt"), MOTTO, "utf8");
+writeFileSync(join(outDir, "entry.txt"), buildEntryLine(), "utf8");
